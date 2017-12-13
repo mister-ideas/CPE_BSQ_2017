@@ -9,9 +9,8 @@
 #define BSQ_H_
 
 typedef struct bsq {
+	char *map_path;
 	char *buff;
-	char *str_map;
-	int **arr_map;
 } bsq_t;
 
 #endif
