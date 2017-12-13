@@ -15,18 +15,18 @@
 
 void file_lines(bsq_t *bsq)
 {
-	int first_line_size = 0;
 	int visible_chars = 0;
 
+	bsq->first_line_size = 0;
 	for (int i = 0; bsq->buff[i] != '\n'; i++)
-		first_line_size += 1;
+		bsq->first_line_size += 1;
 	bsq->lines_nb = 0;
 	for (int i = 0; bsq->buff[i]; i++) {
 		if (bsq->buff[i] == '\n')
 			bsq->lines_nb += 1;
 	}
 	bsq->lines_nb -= 1;
-	visible_chars = bsq->lines_nb + first_line_size;
+	visible_chars = bsq->lines_nb + bsq->first_line_size;
 	bsq->columns_nb = (bsq->file_size - visible_chars) / bsq->lines_nb;
 }
 
