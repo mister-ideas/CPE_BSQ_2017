@@ -15,19 +15,11 @@
 
 void file_lines(bsq_t *bsq)
 {
-	char temp[12];
-	int visible_chars = 0;
-	int i;
-
-	bsq->lines_nb = 0;
-	bsq->columns_nb = 0;
-	for (i = 0; bsq->buff[i] != '\n'; i++)
-		temp[i] = bsq->buff[i];
-	temp[i + 1] = '\0';
-	bsq->lines_nb = my_getnbr(temp);
-	visible_chars = bsq->lines_nb + my_strlen(temp);
-	bsq->columns_nb = ((bsq->file_size - visible_chars) / bsq->lines_nb);
-	printf("%d\n", bsq->columns_nb);
+	for (int i = 0; bsq->buff[i]; i++) {
+		if (bsq->buff[i] == '\n')
+			bsq->lines_nb += 1;
+	}
+	bsq->lines_nb -= 1;	
 }
 
 int fill_buff(bsq_t *bsq, int fd, char **av)
