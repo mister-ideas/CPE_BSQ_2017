@@ -10,11 +10,13 @@
 
 typedef struct bsq {
 	char *buff;
+	char *chars;
+	int **ints;
 	int file_size;
 	int first_line_size;
 	int lines_nb;
-	int columns_nb;
-	int **map;
+	int col_nb;
+	int invi_chars;
 } bsq_t;
 
 #endif
