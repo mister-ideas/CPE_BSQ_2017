@@ -61,7 +61,7 @@ int print_final_map(bsq_t *bsq)
 	for (int x = 1; x < bsq->lines_nb; x++) {
 		for (int y = 1; y < bsq->col_nb; y++) {
 			if (bsq->ints[x][y] == -1)
-				bsq->final[x * bsq->col_nb + y] = 'x';
+				bsq->final[x * bsq->col_nb + y + x] = 'x';
 		}
 	}
 	my_putstr(bsq->final);
