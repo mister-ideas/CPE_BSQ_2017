@@ -5,6 +5,7 @@
 ** tools.c
 */
 
+#include <stdlib.h>
 #include "my.h"
 #include "bsq.h"
 
@@ -41,6 +42,7 @@ void free_all(bsq_t *bsq)
 {
 	for (int i = 0; i < bsq->lines_nb; i++)
 		free(bsq->ints[i]);
+	free(bsq->final);
 	free(bsq->ints);
 	free(bsq->chars);
 	free(bsq->buff);

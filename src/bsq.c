@@ -21,6 +21,10 @@ int biggest_square(bsq_t *bsq, int fd, char **av)
 		return (1);
 	if (fill_int_map(bsq) == 1)
 		return (1);
+	convert_int_map(bsq);
+	find_biggest_square(bsq);
+	if (print_final_map(bsq) == 1)
+		return (1);
 	return (0);
 }
 
