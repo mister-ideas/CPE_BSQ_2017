@@ -31,8 +31,8 @@ void convert_int_map(bsq_t *bsq)
 void find_biggest_square(bsq_t *bsq)
 {
 	bsq->square_size = 0;
-	for (int x = 1; x < bsq->lines_nb; x++) {
-		for (int y = 1; y < bsq->col_nb; y++) {
+	for (int x = 0; x < bsq->lines_nb; x++) {
+		for (int y = 0; y < bsq->col_nb; y++) {
 			if (bsq->square_size < bsq->ints[x][y]) {
 				bsq->x = x;
 				bsq->y = y;
@@ -58,8 +58,8 @@ int print_final_map(bsq_t *bsq)
 		j++;
 	}
 	bsq->final[j] = '\0';
-	for (int x = 1; x < bsq->lines_nb; x++) {
-		for (int y = 1; y < bsq->col_nb; y++) {
+	for (int x = 0; x < bsq->lines_nb; x++) {
+		for (int y = 0; y < bsq->col_nb; y++) {
 			if (bsq->ints[x][y] == -1)
 				bsq->final[x * bsq->col_nb + y + x] = 'x';
 		}
