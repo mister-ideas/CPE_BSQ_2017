@@ -31,6 +31,8 @@ int fill_int_map(bsq_t *bsq)
 				bsq->ints[x][y] = 1;
 			else if (bsq->chars[j] == 'o')
 				bsq->ints[x][y] = 0;
+			else
+				return (1);
 			j++;
 		}
 	}
