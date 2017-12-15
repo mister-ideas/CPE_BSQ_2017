@@ -8,7 +8,9 @@
 SRC_DIR=	src
 
 SRC=		$(SRC_DIR)/bsq.c	\
-		$(SRC_DIR)/fill.c	\
+		$(SRC_DIR)/fill_buff.c	\
+		$(SRC_DIR)/fill_chars.c	\
+		$(SRC_DIR)/fill_int.c	\
 		$(SRC_DIR)/algo.c	\
 		$(SRC_DIR)/tools.c
 

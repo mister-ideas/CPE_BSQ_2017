@@ -11,16 +11,16 @@
 
 void file_lines(bsq_t *bsq)
 {
-	bsq->first_line_size = 0;
+	bsq->first_line = 0;
 	for (int i = 0; bsq->buff[i] != '\n'; i++)
-		bsq->first_line_size += 1;
+		bsq->first_line += 1;
 	bsq->lines_nb = 0;
 	for (int i = 0; bsq->buff[i]; i++) {
 		if (bsq->buff[i] == '\n')
 			bsq->lines_nb += 1;
 	}
 	bsq->lines_nb -= 1;
-	bsq->invi_chars = bsq->lines_nb + bsq->first_line_size;
+	bsq->invi_chars = bsq->lines_nb + bsq->first_line;
 	bsq->col_nb = (bsq->file_size - bsq->invi_chars) / bsq->lines_nb;
 }
 

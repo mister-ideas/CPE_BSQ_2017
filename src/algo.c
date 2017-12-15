@@ -51,9 +51,9 @@ int print_final_map(bsq_t *bsq)
 {
 	int j = 0;
 
-	if ((bsq->final = malloc(bsq->file_size - bsq->first_line_size)) == NULL)
+	if ((bsq->final = malloc(bsq->file_size - bsq->first_line)) == NULL)
 		return (1);
-	for (int i = bsq->first_line_size + 1; bsq->buff[i]; i++) {
+	for (int i = bsq->first_line + 1; bsq->buff[i]; i++) {
 		bsq->final[j] = bsq->buff[i];
 		j++;
 	}

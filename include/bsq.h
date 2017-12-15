@@ -14,7 +14,7 @@ typedef struct bsq {
 	int **ints;
 	char *final;
 	int file_size;
-	int first_line_size;
+	int first_line;
 	int lines_nb;
 	int col_nb;
 	int invi_chars;
