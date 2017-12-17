@@ -12,19 +12,11 @@
 
 void convert_int_map(bsq_t *bsq)
 {
-	int temp;
+	int temp = 0;
 
 	for (int x = 1; x < bsq->lines_nb; x++) {
-		for (int y = 1; y < bsq->col_nb; y++) {
-			if (bsq->ints[x][y] != 0) {
-				temp = bsq->ints[x - 1][y];
-				if (temp > bsq->ints[x][y - 1])
-					temp = bsq->ints[x][y - 1];
-				if (temp > bsq->ints[x - 1][y - 1])
-					temp = bsq->ints[x - 1][y - 1];
-				bsq->ints[x][y] += temp;
-			}
-		}
+		for (int y = 1; y < bsq->col_nb; y++)
+			find_smallest_int(bsq, temp, x, y);
 	}
 }
 
@@ -32,13 +24,8 @@ void find_biggest_square(bsq_t *bsq)
 {
 	bsq->square_size = 0;
 	for (int x = 0; x < bsq->lines_nb; x++) {
-		for (int y = 0; y < bsq->col_nb; y++) {
-			if (bsq->square_size < bsq->ints[x][y]) {
-				bsq->x = x;
-				bsq->y = y;
-				bsq->square_size = bsq->ints[x][y];
-			}
-		}
+		for (int y = 0; y < bsq->col_nb; y++)
+			square_stats(bsq, x, y);
 	}
 	for (int x = bsq->x; x > bsq->x - bsq->square_size ; x--) {
 		for (int y = bsq->y; y > bsq->y - bsq->square_size; y--) {
@@ -59,10 +46,8 @@ int print_final_map(bsq_t *bsq)
 	}
 	bsq->final[j] = '\0';
 	for (int x = 0; x < bsq->lines_nb; x++) {
-		for (int y = 0; y < bsq->col_nb; y++) {
-			if (bsq->ints[x][y] == -1)
-				bsq->final[x * bsq->col_nb + y + x] = 'x';
-		}
+		for (int y = 0; y < bsq->col_nb; y++)
+			convert_coordinates(bsq, x, y);
 	}
 	my_putstr(bsq->final);
 	return (0);

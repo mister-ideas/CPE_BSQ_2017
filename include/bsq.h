@@ -29,10 +29,14 @@ int fill_chars_map(bsq_t *bsq);
 int fill_buff(bsq_t *bsq, int fd, char **av);
 int print_final_map(bsq_t *bsq);
 
-void file_lines(bsq_t *bsq);
+void file_stats(bsq_t *bsq);
 void check_char(bsq_t *bsq, int x);
 void free_all(bsq_t *bsq);
 void convert_int_map(bsq_t *bsq);
 void find_biggest_square(bsq_t *bsq);
+void check_char_int(bsq_t *bsq, int x, int y, int j);
+void square_stats(bsq_t *bsq, int x, int y);
+void convert_coordinates(bsq_t *bsq, int x, int y);
+void find_smallest_int(bsq_t *bsq, int temp, int x, int y);
 
 #endif

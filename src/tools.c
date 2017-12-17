@@ -9,7 +9,25 @@
 #include "my.h"
 #include "bsq.h"
 
-void file_lines(bsq_t *bsq)
+void find_smallest_int(bsq_t *bsq, int temp, int x, int y)
+{
+	if (bsq->ints[x][y] != 0) {
+		temp = bsq->ints[x - 1][y];
+		if (temp > bsq->ints[x][y - 1])
+			temp = bsq->ints[x][y - 1];
+		if (temp > bsq->ints[x - 1][y - 1])
+			temp = bsq->ints[x - 1][y - 1];
+		bsq->ints[x][y] += temp;
+	}
+}
+
+void convert_coordinates(bsq_t *bsq, int x, int y)
+{
+	if (bsq->ints[x][y] == -1)
+		bsq->final[x * bsq->col_nb + y + x] = 'x';
+}
+
+void file_stats(bsq_t *bsq)
 {
 	bsq->first_line = 0;
 	for (int i = 0; bsq->buff[i] != '\n'; i++)
@@ -24,17 +42,12 @@ void file_lines(bsq_t *bsq)
 	bsq->col_nb = (bsq->file_size - bsq->invi_chars) / bsq->lines_nb;
 }
 
-void check_char(bsq_t *bsq, int x)
+void square_stats(bsq_t *bsq, int x, int y)
 {
-	int y = 0;
-	int j = 0;
-
-	for (y = 0; y < bsq->col_nb; y++) {
-		if (bsq->chars[j] == '.')
-			bsq->ints[x][y] = 1;
-		else if (bsq->chars[j] == 'o')
-			bsq->ints[x][y] = 0;
-		j++;
+	if (bsq->square_size < bsq->ints[x][y]) {
+		bsq->x = x;
+		bsq->y = y;
+		bsq->square_size = bsq->ints[x][y];
 	}
 }
 

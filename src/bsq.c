@@ -16,7 +16,7 @@ int biggest_square(bsq_t *bsq, int fd, char **av)
 {
 	if (fill_buff(bsq, fd, av) == 1)
 		return (1);
-	file_lines(bsq);
+	file_stats(bsq);
 	if (fill_chars_map(bsq) == 1)
 		return (1);
 	if (fill_int_map(bsq) == 1)
