@@ -29,6 +29,8 @@ int fill_chars_map(bsq_t *bsq)
 			j--;
 		j++;
 	}
+	if (j == 1)
+		bsq->col_nb = 1;
 	bsq->chars[j] = '\0';
 	return (0);
 }
